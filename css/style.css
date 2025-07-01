@@ -1,0 +1,329 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo geral do body */
+body {
+  min-height: 100vh;
+  background-color: var(--cor-fundo);
+  position: relative;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #000;
+}
+
+/* ----- DEFINIÇÃO DA PALETA DE CORES ----- */
+:root {
+  --cor-fundo: #f3debe;
+}
+
+/* ----- ANIMAÇÃO DE FUNDO ----- */
+.animacao {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.brilho {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: calc(var(--i) * 2%); /* espalha horizontalmente */
+  bottom: -30px;
+  background-image: url(/img/brilho.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: subir linear infinite;
+  animation-duration: calc(3s + var(--i) * 0.5s); /* tempo variável */
+}
+
+@keyframes subir {
+  0% {
+    transform: translateY(0) scale(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ----- MENU PRINCIPAL ----- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid black;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.logo {
+  text-indent: -3000px;
+  display: block;
+  float: left;
+  background: url(/img/logo_GISELE_ARRUDA.png) no-repeat;
+  width: 290px;
+  height: 24px;
+  margin-top: 5px;
+}
+
+.logo a {
+  width: 284px;
+  height: 24px;
+  text-indent: -3000px;
+  display: block;
+}
+
+header nav a {
+  position: relative;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  font-family: 'Trebuchet MS', sans-serif;
+  letter-spacing: 3px;
+  transition: 0.2s;
+}
+
+header nav a:hover,
+header nav a:visited {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ----- SEÇÃO INTRO (PÁGINA INICIAL) ----- */
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center;      /* Centraliza horizontalmente */
+  text-align: center;
+  width: 100%;
+  height: 100vh;            /* Ocupa 100% da altura da tela */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.intro a {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  background: none;
+  color: #000;
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.digitando {
+  font-family: monospace;
+  font-size: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid black;
+  width: 0;
+  animation: digita 2s steps(4) forwards, cursor 0.5s step-end infinite;
+}
+
+@keyframes digita {
+  from { width: 0 }
+  to { width: 4ch } /* 4 caracteres (2025) */
+}
+
+@keyframes cursor {
+  0%, 100% { border-color: transparent }
+  50% { border-color: black }
+}
+
+/* ----- SOBRE MIM ----- */
+main {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1500px;
+}
+
+.conteudo {
+  width: 500px;
+  float: left;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+aside {
+  width: 800px;
+  float: right;
+  text-align: left;
+  margin-right: 50px;
+  margin-top: 44px;
+  font-family: Verdana, sans-serif;
+  font-size: 20px;
+  line-height: 40.7px;
+}
+
+/* ----- HABILIDADES ----- */
+section.divisoria {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  margin: 50px 50px;
+  width: 1250px;
+  display: flex;
+  justify-content: center;
+  gap: 174px;
+  height: 50px;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+/* ----- FORMAÇÃO ACADÊMICA ----- */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+}
+
+.skills div {
+  padding: 30px 50px;
+  text-align: center;
+}
+
+.skills span {
+  color: #8a6e9a;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* ----- ANIMAÇÃO DIGITAÇÃO TEXTO "OLA, MEU NOME É GISELE" ----- */
+.digitando-2 {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: monospace;
+  white-space: pre;
+  overflow: hidden;
+  border-right: 2px solid black;
+  width: 0;
+  animation: digitar2 4s steps(34) forwards, cursor2 0.5s step-end infinite;
+  margin-top: 20px;
+  text-align: center;
+}
+
+@keyframes digitar2 {
+  from { width: 0 }
+  to { width: 23ch; }
+}
+
+@keyframes cursor2 {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+/* ----- PORTFÓLIO ----- */
+.portifolio {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.exemplos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.exemplos div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exemplos a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.exemplos a:hover {
+  color: #a377d6;
+}
+
+.exemplos img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ----- CONTATO ----- */
+.contato {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: var(--cor-fundo);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.contato h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.formulario button {
+  background-color: #000;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario button:hover {
+  background-color: #333;
+}
